@@ -1,4 +1,4 @@
-class ExceptionMigrationGenerator < Rails::Generator::NamedBase
+class SprocketFulfillmentMigrationsGenerator < Rails::Generator::NamedBase
 
   def manifest
     record do |m|
