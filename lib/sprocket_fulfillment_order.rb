@@ -10,6 +10,15 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
   validates_inclusion_of :ship_via, :in => SprocketFulfillmentOrder::SprocketFulfillment::Map::CARRIER_CODES, :message => "is not valid. Please check carrier mapping for valid carrier codes."
   validates_format_of :email, :semail, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_nil => true
 
+  validates_inclusion_of :state, :in =>  ['AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC',
+                                          'FM','FL','GA','GU','HI','ID','IL','IN','IA','KS',
+                                          'KY','LA','ME','MH','MD','MA','MI','MN','MS','MO',
+                                          'MT','NE','NV','NH','NJ','NM','NY','NC','ND','MP',
+                                          'OH','OK','OR','PW','PA','PR','RI','SC','SD','TN',
+                                          'TX','UT','VT','VI','VA','WA','WV','WI','WY'], 
+                                  :if  => Proc.new { |order| order.foreign? == false }, 
+                                  :message => 'is not a valid two-character state abbreviation.'
+
   def validate
     if country == Map.get_country_code('United States') && state.size > 2
       errors.add('state', "is not valid. If shipping in US, please use 2 character state code. ")
