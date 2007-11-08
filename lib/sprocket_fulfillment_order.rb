@@ -6,8 +6,10 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
   validates_length_of :last_name, :slast_name, :city, :scity, :password, :maximum => 20, :allow_nil => true
   validates_length_of :company, :address_1, :address_2, :comment, :scompany, :saddress_1, :saddress_2, :title, :stitle, :maximum => 40, :allow_nil => true
   validates_length_of :sales_id, :is => 3
-  validates_inclusion_of :country, :scountry, :in => SprocketFulfillment::Map::COUNTRY_CODES, :message => "is not valid. Please check country mapping for valid country codes.", :allow_nil => true
-  validates_inclusion_of :ship_via, :in => SprocketFulfillmentOrder::SprocketFulfillment::Map::CARRIER_CODES, :message => "is not valid. Please check carrier mapping for valid carrier codes."
+
+  validates_inclusion_of :country, :scountry, :in => Map::COUNTRY_CODES, :message => "is not valid. Please check country mapping for valid country codes.", :allow_nil => true
+  validates_inclusion_of :ship_via, :in => Map::CARRIER_CODES, :message => "is not valid. Please check carrier mapping for valid carrier codes."
+
   validates_format_of :email, :semail, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_nil => true
 
   validates_inclusion_of :state, :in =>  ['AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC',
@@ -50,17 +52,23 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
     orders = find(:all, :conditions =>["created_at > ? or created_at < ?", start_time, end_time]) 
     p "** Number of orders = #{orders.size}"
     raise "No new orders in this period" if orders.empty?
-    r[0] = orders[0].assign_to_map
+    # Take each order and create row(s) hash related to that order and its products. If line items in an order are less than 5 it will create single row.
+    # If its more than 5 it will create the first row and put continued=X in that row and add remaining items in next row.
+    order_row = 0
     orders.each do |order|
+       # Assigning the order related values in the row. Next we will add the products related value for the corresponding order.
+        r[order_row] = order.assign_to_map
         products = order.sprocket_fulfillment_order_line_items # collect products
         p "**Products in numbers for order id #{order.id} = #{products.size}"
         i = 1 #product counter
         products.each do |product|
-          row_no = i/5
-          j = i%5
+          row_no = order_row +(i-1)/5       # row number depends on number of products. For 1st 5 products... row is 1 or next 5 its 2nd and so on
+          j = i%5==0 ? 5 : i%5      # this is number of line item in that row
+          
           if i > 5
             r[row_no -1]["Continued"] = "X"
           end
+          # Entering product related data in the order's row or in other rows in case of more than 5 products.
           r[row_no] ||= {}
           r[row_no]["Product0#{j}"]          = order.sales_id + product.product
           r[row_no]["Quantity0#{j}"]         = product.quantity
@@ -73,11 +81,16 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
           r[row_no]["ReturnProductCode#{j}"] = product.return_product_code
           i +=1
         end
+        order_row  +=1
     end
     
-    filename = File.join(RAILS_ROOT, SprocketFulfillment::Map::CSV_STORAGE_PATH, "Order_#{start_time.strftime('%d-%m-%Y')}_#{end_time.strftime('%d-%m-%Y')}.csv")
+    # enter prepared rows in CSV
+    filename = File.join( Map::CSV_STORAGE_PATH, "Order_#{start_time.strftime('%d-%m-%Y')}_#{end_time.strftime('%d-%m-%Y')}.csv")
+
     CSV.open(filename, 'w') do |writer|
-         writer << titles          
+      #first row as titles of fields
+         writer << titles   
+      # now add orders rows from hash based on titles as keys.  
          r.each do |row|
            ary = []
            titles.each{|val| ary << row[val] || ''}

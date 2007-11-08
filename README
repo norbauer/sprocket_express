@@ -33,13 +33,13 @@ Usage
            :sales_id   => 'AMZ',
            :address_1  => "11 Park Place",
            :city       => "New York",
-           :country    => SprocketFulfillment::Map.get_country_code("United States"),
+           :country    => Map.get_country_code("United States"),
            :state      => 'NY',
            :zipcode    => '10007',
-           :ship_via   => SprocketFulfillment::Map.get_carrier_code('USPS Express Mail') 
+           :ship_via   => Map.get_carrier_code('USPS Express Mail') 
          )
 
-@order.sprocket_products << SprocketProduct.new(:product => "370", 
+@order.sprocket_fulfillment_order_line_items << SprocketFulfillmentOrderLineItem.new(:product => "370", 
                                                 :quantity => 43, 
                                                 :price => 37.00)
 

@@ -1,6 +1,6 @@
 module Map
   # Path of the order csv file to be stored. 
-  CSV_STORAGE_PATH = "lib/sprocket_fulfillment/sprocket_fulfillment_csv_files"  
+  CSV_STORAGE_PATH = File.dirname(__FILE__) +'/../../../../public/sprocket_fulfillment_csv_files' 
  
   CARRIER_CODES = { 'AP' => "USPS International Air parcel or Air Letter",
                     'EM' => "USPS Express Mail",
