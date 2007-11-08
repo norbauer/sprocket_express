@@ -3,5 +3,5 @@ namespace :db do
   task :create_sprocket_order_csv => :environment do
     filename = SprocketFulfillmentOrder.create_order_file_for(Time.now.yesterday)
     p "**File created. File file here... #{filename}"
-  end # end task
-end # end namespace
+  end
+end

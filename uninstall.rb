@@ -1,1 +1,1 @@
-# Uninstall hook code here
+puts "You may want to uninstall the \"#{ File.dirname(__FILE__) + '/../../../public/sprocket_fulfillment_csv_files' }\" directory."

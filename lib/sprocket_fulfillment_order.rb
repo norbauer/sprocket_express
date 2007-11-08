@@ -1,14 +1,13 @@
-
 class SprocketFulfillmentOrder < ActiveRecord::Base
   require 'csv'    
-  has_many :sprocket_products
+  has_many :sprocket_fulfillment_order_line_items
   validates_presence_of :first_name, :last_name, :sales_id, :address_1,:city, :country, :state, :zipcode
-  validates_length_of :alt_num, :first_name, :sfirst_name, :po_number,:maximum =>15,:allow_nil => true
-  validates_length_of :last_name,:slast_name,:city, :scity, :password,:maximum =>20,:allow_nil => true
-  validates_length_of :company, :address_1, :address_2,:comment,:scompany, :saddress_1, :saddress_2,:title,:stitle,:maximum =>40,:allow_nil => true
-  validates_length_of :sales_id,:is =>3
-  validates_inclusion_of :country, :scountry, :in =>Map::COUNTRY_CODES, :message=>"is not valid.Please check country mapping for valid country codes.",:allow_nil => true
-  validates_inclusion_of :ship_via, :in =>Map::CARRIER_CODES, :message=>"is not valid.Please check carrier mapping for valid carrier codes."
+  validates_length_of :alt_num, :first_name, :sfirst_name, :po_number, :maximum => 15, :allow_nil => true
+  validates_length_of :last_name,:slast_name,:city, :scity, :password, :maximum => 20, :allow_nil => true
+  validates_length_of :company, :address_1, :address_2, :comment, :scompany, :saddress_1, :saddress_2, :title, :stitle, :maximum => 40, :allow_nil => true
+  validates_length_of :sales_id,:is => 3
+  validates_inclusion_of :country, :scountry, :in => Map::COUNTRY_CODES, :message => "is not valid. Please check country mapping for valid country codes.", :allow_nil => true
+  validates_inclusion_of :ship_via, :in => SprocketFulfillmentOrder::Map::CARRIER_CODES, :message => "is not valid. Please check carrier mapping for valid carrier codes."
   validates_format_of :email, :semail, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,:allow_nil => true
 
   # Validate if the country is US, state should be 2 characters state code.
@@ -35,7 +34,6 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
     Map.search_attribute(attr.to_sym)[2]
   end
   
-  
   def self.create_order_file_for(start_time, end_time= Time.now)
     titles = Map.extract_titles
     r = []
@@ -46,7 +44,7 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
     raise "No new orders in this period" if orders.empty?
     r[0] = orders[0].assign_to_map
     orders.each do |order|
-        products = order.sprocket_products # collect products
+        products = order.sprocket_fulfillment_order_line_items # collect products
         p "**Products in numbers for order id #{order.id} = #{products.size}"
         i = 1 #product counter
         products.each do |product|
