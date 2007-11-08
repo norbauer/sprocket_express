@@ -1,1 +1,1 @@
-puts "You may want to uninstall the \"#{ File.dirname(__FILE__) + '/../../../public/sprocket_fulfillment_csv_files' }\" directory."
+puts "SprocketExpress uninstalled.  Incidentally, you may want to delete the \"#{ File.dirname(__FILE__) + '/../../../public/sprocket_fulfillment_csv_files' }\" directory."
