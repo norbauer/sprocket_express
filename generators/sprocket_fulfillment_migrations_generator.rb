@@ -1,4 +1,4 @@
-class SprocketFulfillmentMigrationsGenerator < Rails::Generator::NamedBase
+class SprocketFulfillmentMigrationsGenerator < Rails::Generator::Base
 
   def manifest
     record do |m|
