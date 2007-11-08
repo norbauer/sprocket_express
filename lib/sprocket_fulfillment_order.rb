@@ -11,10 +11,10 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
   validates_format_of :email, :semail, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_nil => true
 
   def validate
-    if country == SprocketFulfillment::Map.get_country_code('United States') && state.size > 2
+    if country == Map.get_country_code('United States') && state.size > 2
       errors.add('state', "is not valid. If shipping in US, please use 2 character state code. ")
     end
-    if scountry == SprocketFulfillment::Map.get_country_code('United States') && sstate.size > 2
+    if scountry == Map.get_country_code('United States') && sstate.size > 2
       errors.add('sstate', "is not valid. If shipping in US, please use 2 character state code. ")
     end
   end
@@ -22,7 +22,7 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
   # Create a hash with attributes values and corresponding mapping column
   def assign_to_map
     @row = {}
-    ::SprocketFulfillment::Map::MAPPING.each do |m|
+    SprocketFulfillment::Map::MAPPING.each do |m|
       @row["#{m[1]}"] = send(m[0]) if has_attribute?(m[0])
     end
     return @row
@@ -30,11 +30,11 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
   
   # returns the property of an attribute as defined in MAP::MAPPING. 
   def self.show_property(attr)
-    ::SprocketFulfillment::Map.search_attribute(attr.to_sym)[2]
+    Map.search_attribute(attr.to_sym)[2]
   end
   
   def self.create_order_file_for(start_time, end_time= Time.now)
-    titles = SprocketFulfillment::Map.extract_titles
+    titles = Map.extract_titles
     r = []
     # Collect all the orders
     # IMPORTANT: Change the condition based on cron requirements
