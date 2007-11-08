@@ -1,0 +1,11 @@
+Description:
+    The sprocket express order generator creates a migration for the Rails project to store
+    orders (and all their attributes) in the db, which is required (rather than sending directly 
+    to the API) because *there is no real-time API*.  Sprocket Express requires pushing daily
+    order summary CSVs to its FTP server nightly.
+
+Example:
+    ./script/generate sprocket_fulfillment_migrations
+
+    This will create a new migration called CreateSprocketFulfillmentTables and the tables
+    sprocket_fulfillment_orders and sprocket_fulfillment_order_line_items.
