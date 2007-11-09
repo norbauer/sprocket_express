@@ -7,7 +7,7 @@ class SprocketDataPush
     
   def initialize(options)
     requires!(options, :sprocket_customer_id, :start_time, :output_file_directory_path)
-    options.reverse_merge! :end_time => Time.now, :show_prices_on_invoice => true, :show_shipping_price_on_invoice => true
+    options.reverse_merge! :end_time => Time.now, :show_prices_on_invoice => true, :show_shipping_price_on_invoice => true, :ship_ahead => false
     @options = options
   end
     
@@ -85,9 +85,17 @@ class SprocketDataPush
     row['Cust_Num'] = '0'
     row['Foreign'] = order.foreign? ? 'Y' : ''
     row['Source_Key'] = options[:sprocket_customer_id].upcase
+    row['Sales_ID'] = options[:sprocket_customer_id].upcase
     row['UsePrices'] = options[:show_prices_on_invoice] ? 'X' : ''
     row['UseShipAmt'] = options[:show_shipping_price_on_invoice] ? 'X' : ''
-    row['OrderType'] = options[:show_shipping_price_on_invoice] ? 'X' : ''
+    row['PayMethod'] = 'ck'
+    row['OrderType'] = 'IMPORT'
+    row['Internet'] = 'F'
+    row['NoMail'] = 'F'
+    row['NoRent'] = 'F'
+    row['NoEmail'] = 'F'
+    row['BestOrderPromo'] = 'F'
+    row['ShipAhead'] = options[:ship_ahead] ? 'T' : 'F'
     row
   end
   
