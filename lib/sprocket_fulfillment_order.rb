@@ -14,13 +14,24 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
   
   validate :check_state_values
   
+  before_save :truncate_attributes_that_can_be
+  
   def foreign?
     !self.country.blank? && (self.country != country_names_to_country_codes['United States'])
   end
-  
-  # @TODO we want to truncate (not validate) first_name, last_name, and company lengths
       
   private ##########################################################################
+  
+  def truncate_attributes_that_can_be
+    { :billing_first_name => 15,
+      :shipping_first_name => 15,
+      :billing_last_name => 20,
+      :shipping_last_name => 20,
+      :billing_company => 40,
+      :shipping_company => 40 }.each_with_key do |attribute,limit|
+        self.send("#{attribute.to_s}=",self.send(attribute).to_s.slice(0,limit)) 
+      end
+  end
   
   def check_state_values
     if country == Map.country_names_to_country_codes['United States'] && state.size > 2
