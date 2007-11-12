@@ -1,3 +1,4 @@
+# comes from ActiveMerchant
 module RequiresParameters
   def requires!(hash, *params)
     keys = hash.keys

@@ -12,7 +12,7 @@ class SprocketDataPush
   end
     
   def write_csv!
-    orders = SprocketFulfillmentOrder.find(:all, :conditions =>["created_at > ? or created_at < ?", options[:start_time], options[:end_time]) 
+    orders = SprocketFulfillmentOrder.find(:all, :conditions => ["created_at > ? or created_at < ?", options[:start_time], options[:end_time]]) 
     return false if orders.empty?
         
     csv_rows = []
@@ -81,21 +81,14 @@ class SprocketDataPush
   
   def populate_row(row,order)
     row.merge!(assign_order_attributes_to_corresponding_csv_columns(order))
-    row['AltNum'] = ''
-    row['Cust_Num'] = '0'
     row['Foreign'] = order.foreign? ? 'Y' : ''
     row['Source_Key'] = options[:sprocket_customer_id].upcase
     row['Sales_ID'] = options[:sprocket_customer_id].upcase
     row['UsePrices'] = options[:show_prices_on_invoice] ? 'X' : ''
     row['UseShipAmt'] = options[:show_shipping_price_on_invoice] ? 'X' : ''
-    row['PayMethod'] = 'ck'
-    row['OrderType'] = 'IMPORT'
-    row['Internet'] = 'F'
-    row['NoMail'] = 'F'
-    row['NoRent'] = 'F'
-    row['NoEmail'] = 'F'
-    row['BestOrderPromo'] = 'F'
     row['ShipAhead'] = options[:ship_ahead] ? 'T' : 'F'
+    { 'Cust_Num' => '0', 'PayMethod' => 'ck', 'OrderType' => 'IMPORT' }.each_with_key { |key,value| row[key] = value }
+    ['Internet','NoMail','NoRent','NoEmail','BestOrderPromo'].each { |key| row[key] = 'F' }
     row
   end
   

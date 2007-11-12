@@ -1,47 +1,8 @@
 class CreateSprocketFulfillmentTables < ActiveRecord::Migration
   def self.up
-    create_table :sprocket_fulfillment_orders, :force => true do |t|
-      t.string :ship_via, :limit => 3
-      t.string :billing_last_name, :limit => 20
-      t.string :billing_first_name, :limit => 15
-      t.string :billing_company, :limit => 40
-      t.string :billig_address_1, :limit => 40
-      t.string :billing_address_2, :limit => 40
-      t.string :billing_city, :limit => 20
-      t.string :billing_state, :limit => 3
-      t.string :billing_zipcode, :limit => 10
-      t.string :billing_phone, :limit => 14
-      t.string :billing_email, :limit => 50
-      t.string :billing_country, :limit => 3
-      t.string :shipping_last_name, :limit => 20
-      t.string :shipping_first_name, :limit => 15
-      t.string :shipping_company, :limit => 40
-      t.string :shipping_address_1, :limit => 40
-      t.string :shipping_address_2, :limit => 40
-      t.string :shipping_city, :limit => 20
-      t.string :shipping_state, :limit => 3
-      t.string :shipping_zipcode, :limit => 10
-      t.string :shipping_phone, :limit => 14
-      t.string :shipping_email, :limit => 50
-      t.string :shipping_country, :limit => 3
-      t.datetime :date_of_original_purchase_transaction
-      t.integer :id_from_original_purchase_transaction
-      t.datetime :hold_date
-      t.decimal :shipping_fee, :precision => 8, :scale => 2
-      t.string :gift_message_1, :limit => 70
-      t.string :gift_message_2, :limit => 70
-      t.string :gift_message_3, :limit => 70
-      t.timestamps
-    end
-
-    create_table :sprocket_fulfillment_order_line_items, :force => true do |t|
-      t.integer :sprocket_fulfillment_order_id
-      t.string :sku, :limit => 20
-      t.integer :quantity
-      t.decimal :price, :precision => 12, :scale => 4
-      t.integer :discount
-    end
-
+    # To keep things DRY wth schema.rb for running specs
+    eval File.open(File.dirname(__FILE__) + '/_sprocket_fulfillment_orders.rb').read
+    eval File.open(File.dirname(__FILE__) + '/_sprocket_fulfillment_order_line_items.rb').read
   end
 
   def self.down
