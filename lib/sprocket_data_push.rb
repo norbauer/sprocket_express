@@ -81,7 +81,7 @@ class SprocketDataPush
   
   def populate_row(row,order)
     row.merge!(assign_order_attributes_to_corresponding_csv_columns(order))
-    row['Foreign'] = order.foreign? ? 'Y' : ''
+    row['Foreign'] = order.foreign? ? 'Y' : 'N'
     row['Source_Key'] = options[:sprocket_customer_id].upcase
     row['Sales_ID'] = options[:sprocket_customer_id].upcase
     row['UsePrices'] = options[:show_prices_on_invoice] ? 'X' : ''

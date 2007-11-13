@@ -1,5 +1,5 @@
 module SprocketExpress
-  module Map
+  module Data
      
     CARRIER_CODES_TO_CARRIER_NAMES = { 'AP'  => "USPS International Air parcel or Air Letter",
                                        'EM'  => "USPS Express Mail",
@@ -438,7 +438,7 @@ module SprocketExpress
       def carrier_names_to_carrier_codes  
         self.carrier_codes_to_carrier_names.invert
       end
-      
+            
       def country_codes_to_country_names
         COUNTRY_CODES_TO_COUNTRY_NAMES
       end

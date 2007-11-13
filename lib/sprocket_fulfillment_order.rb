@@ -1,31 +1,47 @@
 class SprocketFulfillmentOrder < ActiveRecord::Base
   
   include SprocketExpress
-  
+    
+  attr_accessor :shipping_same_as_billing
+    
+  def initialize(attributes=nil)
+    super(attributes)
+    @shipping_same_as_billing = true
+  end
+    
   has_many :sprocket_fulfillment_order_line_items
-  validates_presence_of :billing_first_name, :billing_last_name, :billing_address_1, :billing_city, :billing_country, :billing_state, :billing_zipcode
+  
+  validates_presence_of :billing_first_name, :billing_last_name, :billing_address_1, :billing_city, :billing_country, :billing_state, :billing_zipcode, :ship_via
   validates_length_of :billing_city, :shipping_city, :maximum => 20, :allow_nil => true
   validates_length_of :billing_address_1, :billing_address_2, :shipping_address_1, :shipping_address_2, :maximum => 40, :allow_nil => true
   validates_length_of :shipping_address_1, :shipping_address_2, :maximum => 40, :allow_nil => true
-  validates_length_of :sales_id, :is => 3
 
-  validates_format_of :email, :semail, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_nil => true
-
-  validates_inclusion_of :country,  :in => SprocketExpress::Map::country_codes, :message => "is not valid. Please check country mapping for valid country codes."
-  validates_inclusion_of :scountry, :in => SprocketExpress::Map::country_codes, :message => "is not valid. Please check country mapping for valid country codes.", :allow_nil => true
-  validates_inclusion_of :ship_via, :in => SprocketExpress::Map::carrier_codes, :message => "is not valid. Please check carrier mapping for valid carrier codes."
-  validates_inclusion_of :state,    :in => SprocketExpress::Map::state_abbreviations, :if  => Proc.new { |order| order.foreign? == false }, :message => 'is not a valid two-character state abbreviation.'
+  validates_format_of :billing_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates_format_of :shipping_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :if => Proc.new { |order| !order.shipping_same_as_billing? }
+  
+  validates_inclusion_of :billing_country,  :in => SprocketExpress::Data::country_codes, :message => "is not valid. Please check country mapping for valid country codes."
+  validates_inclusion_of :shipping_country, :in => SprocketExpress::Data::country_codes, :if  => Proc.new { |order| !order.shipping_same_as_billing? }, :message => "is not valid. Please check country mapping for valid country codes.", :allow_nil => true
+  validates_inclusion_of :ship_via, :in => SprocketExpress::Data::carrier_codes, :message => "is not valid. Please check carrier mapping for valid carrier codes."
+  validates_inclusion_of :shipping_state, :in => SprocketExpress::Data::state_abbreviations, :if  => Proc.new { |order| !order.foreign? && !order.shipping_same_as_billing? }, :message => 'is not a valid two-character state abbreviation.'
+  validates_inclusion_of :billing_state,  :in => SprocketExpress::Data::state_abbreviations, :if  => Proc.new { |order| !order.foreign? }, :message => 'is not a valid two-character state abbreviation.'
   
   validate :check_state_values
   
-  before_save :truncate_attributes_that_can_be
-  
+  before_validation :truncate_attributes_that_can_be
+  before_validation :clear_out_shipping_values_if_shipping_same_as_billing
+    
   def foreign?
-    !self.country.blank? && (self.country != country_names_to_country_codes['United States'])
+    if shipping_same_as_billing?
+      !self.billing_country.blank? && (self.billing_country != SprocketExpress::Data::country_names_to_country_codes['United States'])
+    else
+      !self.shipping_country.blank? && (self.shipping_country != SprocketExpress::Data::country_names_to_country_codes['United States'])
+    end
   end
-  
-  # @TODO need to account for when billing and shipping are/aren't the same.
-      
+          
+  def shipping_same_as_billing?
+    @shipping_same_as_billing
+  end
+          
   private ##########################################################################
   
   def truncate_attributes_that_can_be
@@ -34,18 +50,31 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
       :billing_last_name => 20,
       :shipping_last_name => 20,
       :billing_company => 40,
-      :shipping_company => 40 }.each_with_key do |attribute,limit|
+      :shipping_company => 40 }.each_pair do |attribute,limit|
         self.send("#{attribute.to_s}=",self.send(attribute).to_s.slice(0,limit)) 
       end
   end
-  
-  def check_state_values
-    if country == SprocketExpress::Map.country_names_to_country_codes['United States'] && state.size > 2
-      errors.add('state', "is not valid. If shipping in US, please use 2 character state code.")
-    end
-    if scountry == SprocketExpress::Map.country_names_to_country_codes['United States'] && sstate.size > 2
-      errors.add('sstate', "is not valid. If shipping in US, please use 2 character state code.")
+    
+  def clear_out_shipping_values_if_shipping_same_as_billing
+    if shipping_same_as_billing?
+      self.attribute_names.grep(/^shipping_/).each do |attribute|
+        self.send("#{attribute}=",nil)
+      end
     end
   end
   
+  def check_state_values
+    return true if foreign?
+    
+    if billing_state.size != 2
+      errors.add('billing_state', "is not valid. If shipping in US, please use 2 character state code.")
+    end
+    
+    if !shipping_same_as_billing? && !shipping_state.blank?
+      if shipping_state.size != 2 || shipping_state.size != 2
+        errors.add('shipping_state', "is not valid. If shipping in US, please use 2 character state code.")        
+      end
+    end
+  end
+        
 end
