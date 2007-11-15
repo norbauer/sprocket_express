@@ -34,7 +34,7 @@ end
 
 # @TODO remove following line
 require 'ruby-debug'
-
+require 'yaml'
 
 
 class Hash
@@ -71,4 +71,11 @@ def valid_order_attributes
     :billing_country => SprocketExpress::Data.country_names_to_country_codes['United kingdom'],
     :date_of_original_purchase_transaction => Time.now,
     :id_from_original_purchase_transaction => Time.now  }
+end
+
+def valid_line_item_attributes
+  { :sku => 'OMG',
+    :quantity => 37,
+    :price => 37.43,
+    :discount => 43 }
 end

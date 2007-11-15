@@ -34,7 +34,6 @@ describe 'A new', SprocketFulfillmentOrder, 'when given acceptable values for th
       :billing_company => 40,
       :shipping_company => 40 }.each_pair do |attribute,limit|
         @order.send("#{attribute.to_s}=", 'x' * (limit+1))
-         
       end
   end
 

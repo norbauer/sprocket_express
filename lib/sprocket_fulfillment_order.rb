@@ -14,7 +14,6 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
   validates_presence_of :billing_first_name, :billing_last_name, :billing_address_1, :billing_city, :billing_country, :billing_state, :billing_zipcode, :ship_via
   validates_length_of :billing_city, :shipping_city, :maximum => 20, :allow_nil => true
   validates_length_of :billing_address_1, :billing_address_2, :shipping_address_1, :shipping_address_2, :maximum => 40, :allow_nil => true
-  validates_length_of :shipping_address_1, :shipping_address_2, :maximum => 40, :allow_nil => true
 
   validates_format_of :billing_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates_format_of :shipping_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :if => Proc.new { |order| !order.shipping_same_as_billing? }
@@ -24,7 +23,7 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
   validates_inclusion_of :ship_via, :in => SprocketExpress::Data::carrier_codes, :message => "is not valid. Please check carrier mapping for valid carrier codes."
   validates_inclusion_of :shipping_state, :in => SprocketExpress::Data::state_abbreviations, :if  => Proc.new { |order| !order.foreign? && !order.shipping_same_as_billing? }, :message => 'is not a valid two-character state abbreviation.'
   validates_inclusion_of :billing_state,  :in => SprocketExpress::Data::state_abbreviations, :if  => Proc.new { |order| !order.foreign? }, :message => 'is not a valid two-character state abbreviation.'
-  
+    
   validate :check_state_values
   
   before_validation :truncate_attributes_that_can_be
