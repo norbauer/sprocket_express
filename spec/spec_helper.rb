@@ -70,7 +70,7 @@ def valid_order_attributes
     :billing_email => 'e@e.com',
     :billing_country => SprocketExpress::Data.country_names_to_country_codes['United kingdom'],
     :date_of_original_purchase_transaction => Time.now,
-    :id_from_original_purchase_transaction => Time.now  }
+    :id_from_original_purchase_transaction => '4337'  }
 end
 
 def valid_line_item_attributes

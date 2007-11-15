@@ -6,7 +6,8 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
     
   has_many :sprocket_fulfillment_order_line_items
   
-  validates_presence_of :billing_first_name, :billing_last_name, :billing_address_1, :billing_city, :billing_country, :billing_state, :billing_zipcode, :ship_via
+  validates_presence_of :billing_first_name, :billing_last_name, :billing_address_1, :billing_city, :billing_country, :billing_zipcode, :ship_via
+  validates_presence_of :billing_state, :if => Proc.new { |order| !order.foreign? }
   validates_length_of :billing_city, :shipping_city, :maximum => 20, :allow_nil => true
   validates_length_of :billing_address_1, :billing_address_2, :shipping_address_1, :shipping_address_2, :maximum => 40, :allow_nil => true
 
@@ -23,6 +24,7 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
   
   before_validation :truncate_attributes_that_can_be
   before_validation :clear_out_shipping_values_if_shipping_same_as_billing
+  before_validation :remove_state_if_foreign
     
   def foreign?
     if shipping_same_as_billing?
@@ -50,6 +52,13 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
       self.attribute_names.grep(/^shipping_/).each do |attribute|
         self.send("#{attribute}=",nil)
       end
+    end
+  end
+  
+  def remove_state_if_foreign
+    if foreign? 
+      self.billing_state = nil
+      self.shipping_state = nil
     end
   end
   

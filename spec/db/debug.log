@@ -4522,3 +4522,852 @@ WARNING: You're using the Ruby-based MySQL library that ships with Rails. This l
   [4;36;1mSQL (0.000283)[0m   [0;1mCOMMIT[0m
   [4;35;1mSprocketFulfillmentOrder Load (0.001738)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 10:09:54' or created_at < '2007-11-15 10:09:54') [0m
   [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000654)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000188)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.011921)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.002159)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.001306)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001333)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001286)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000182)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002009)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003461)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.005573)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000102)[0m   [0mROLLBACK[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000206)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001461)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.002026)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.011830)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.002419)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001519)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000217)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.001960)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003068)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000168)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000531)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:05:47', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:05:47', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195146347, NULL, NULL, 'Richard', '2007-11-15 12:05:47', NULL, NULL)[0m
+  [4;36;1mSQL (0.000417)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.001848)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000145)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000219)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.000333)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000116)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000170)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000850)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000113)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000180)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000342)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000122)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000187)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000348)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000109)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000187)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000349)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000130)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000176)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000312)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000124)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000158)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000706)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001873)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:05:47' or created_at < '2007-11-15 12:05:47') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000811)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000211)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.054653)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.006432)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.016391)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001319)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001391)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000213)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002124)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003515)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000169)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000524)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:25:20', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:25:20', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195147520, NULL, NULL, 'Richard', '2007-11-15 12:25:20', NULL, NULL)[0m
+  [4;36;1mSQL (0.000382)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.001785)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000150)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000230)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.016708)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000128)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000227)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000354)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000130)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000179)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000366)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000095)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000229)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.003431)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000079)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000133)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000359)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000073)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000124)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.005795)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000140)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000207)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000328)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.002016)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:25:20' or created_at < '2007-11-15 12:25:20') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000832)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000204)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.013119)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.015061)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.001233)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.006319)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001318)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000162)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002084)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003368)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000140)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000432)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:28:39', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:28:39', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195147719, NULL, NULL, 'Richard', '2007-11-15 12:28:39', NULL, NULL)[0m
+  [4;36;1mSQL (0.000377)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.004799)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000121)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000203)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.000320)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000109)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000167)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.016666)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000121)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000183)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000362)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000113)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000164)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000359)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000111)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000156)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.003575)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000111)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000162)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000353)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000112)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000154)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000363)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001883)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:28:39' or created_at < '2007-11-15 12:28:39') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000799)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000222)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.007173)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.006705)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.001083)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.006402)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001451)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000274)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002068)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003304)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.003479)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000486)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:30:33', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:30:33', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195147833, NULL, NULL, 'Richard', '2007-11-15 12:30:33', NULL, NULL)[0m
+  [4;36;1mSQL (0.000636)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.006080)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000135)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000237)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.000371)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000153)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000171)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.011814)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000119)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000185)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000516)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000116)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000343)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.004626)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000123)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000185)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000359)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000112)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000175)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000339)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000083)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000186)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.003692)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.002022)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:30:33' or created_at < '2007-11-15 12:30:33') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000843)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000189)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.005217)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.006583)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.008157)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001277)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.064595)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000235)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.001926)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003175)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000114)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000333)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:38:16', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:38:16', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195148296, NULL, NULL, 'Richard', '2007-11-15 12:38:16', NULL, NULL)[0m
+  [4;36;1mSQL (0.000422)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.001938)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000134)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000294)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.000321)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000133)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000163)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000448)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000097)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000177)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000329)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000111)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000173)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000301)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000110)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000189)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000343)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000115)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000175)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000321)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000110)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000161)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000390)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001907)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:38:16' or created_at < '2007-11-15 12:38:16') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000790)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000189)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001498)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.012185)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.001009)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.014852)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001403)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000221)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002020)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003248)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000146)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000442)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:39:09', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:39:09', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195148349, NULL, NULL, 'Richard', '2007-11-15 12:39:09', NULL, NULL)[0m
+  [4;36;1mSQL (0.000395)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.001693)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000129)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000209)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.011171)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000119)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000181)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000333)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000114)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000174)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000308)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000110)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000172)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.003655)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000103)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000178)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000364)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000115)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000157)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000356)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000115)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000173)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.003765)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001898)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:39:09' or created_at < '2007-11-15 12:39:09') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000783)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000189)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.009613)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.015190)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.001063)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.006692)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001532)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000356)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002035)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003226)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000196)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000479)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:39:29', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:39:29', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195148369, NULL, NULL, 'Richard', '2007-11-15 12:39:29', NULL, NULL)[0m
+  [4;36;1mSQL (0.000848)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.001673)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000097)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000357)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.007368)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000082)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000209)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000326)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000092)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000120)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000288)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000087)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000158)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000477)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000110)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000254)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000330)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000114)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000151)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000323)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000100)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000117)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000387)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001902)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:39:29' or created_at < '2007-11-15 12:39:29') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000681)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000127)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001563)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.025381)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.001290)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.032023)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001313)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000196)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002105)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003323)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000144)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000417)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:39:38', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:39:38', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195148378, NULL, NULL, 'Richard', '2007-11-15 12:39:38', NULL, NULL)[0m
+  [4;36;1mSQL (0.000407)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.001674)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.007907)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000285)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.007864)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000075)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000278)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000377)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000118)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000179)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000324)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000114)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000181)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.004070)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000123)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000178)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000320)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000108)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000141)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000308)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000108)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000192)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000362)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001908)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:39:38' or created_at < '2007-11-15 12:39:38') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000784)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000190)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.014664)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.006715)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.008098)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001227)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001266)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000157)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.001902)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003170)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000119)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000338)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:40:04', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:40:04', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195148404, NULL, NULL, 'Richard', '2007-11-15 12:40:04', NULL, NULL)[0m
+  [4;36;1mSQL (0.000518)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.007509)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000127)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000271)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.000330)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000230)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000264)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.011459)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000121)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000174)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000358)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000114)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000172)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000336)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000151)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000168)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.003527)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000113)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000158)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000318)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000117)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000155)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000365)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001916)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:40:04' or created_at < '2007-11-15 12:40:04') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000741)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000171)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.014772)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.006623)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.001270)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001666)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.002294)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000245)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002157)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003347)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000125)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000424)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:41:23', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:41:23', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195148483, NULL, NULL, 'Richard', '2007-11-15 12:41:23', NULL, NULL)[0m
+  [4;36;1mSQL (0.000496)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.007338)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000087)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000266)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.008123)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000120)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000177)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000317)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000114)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000164)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000343)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000114)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000190)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.003768)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000120)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000176)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000343)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000128)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000182)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000335)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000110)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000156)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000372)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001955)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:41:23' or created_at < '2007-11-15 12:41:23') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000844)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000198)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001325)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.002097)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.001262)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001224)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001448)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000216)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002000)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003390)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.001874)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000476)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:45:16', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:45:16', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195148716, NULL, NULL, 'Richard', '2007-11-15 12:45:16', NULL, NULL)[0m
+  [4;36;1mSQL (0.000445)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.007382)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000115)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000221)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.009136)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000131)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000215)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000405)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000126)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000172)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000382)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000124)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000178)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.003733)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000138)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000182)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000349)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000121)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000166)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000354)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000118)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000169)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000358)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001995)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:45:16' or created_at < '2007-11-15 12:45:16') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000688)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000185)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.057269)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.002216)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.001051)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001328)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001439)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000305)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002080)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003366)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000144)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000430)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:47:37', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:47:37', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195148857, NULL, NULL, 'Richard', '2007-11-15 12:47:37', NULL, NULL)[0m
+  [4;36;1mSQL (0.000366)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.001698)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000097)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000226)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.000354)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000111)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000168)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000324)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000114)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000162)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000349)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000135)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000158)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000306)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000124)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000154)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000462)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000147)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000289)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000410)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000111)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000174)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000350)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001927)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:47:37' or created_at < '2007-11-15 12:47:37') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000785)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000194)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001496)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.002387)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000985)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001313)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001405)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000226)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002038)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003244)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000153)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000476)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:48:59', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:48:59', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195148939, NULL, NULL, 'Richard', '2007-11-15 12:48:59', NULL, NULL)[0m
+  [4;36;1mSQL (0.000394)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.007364)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000093)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000201)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.000332)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000168)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000307)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.010891)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000117)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000194)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000339)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000120)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000164)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000327)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000112)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000165)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.003633)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000089)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000275)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000389)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000116)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000166)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000343)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001907)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:48:59' or created_at < '2007-11-15 12:48:59') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000786)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000145)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001403)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.002068)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000928)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001201)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001273)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000154)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002028)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003286)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000144)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000466)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:50:38', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:50:38', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195149038, NULL, NULL, 'Richard', '2007-11-15 12:50:38', NULL, NULL)[0m
+  [4;36;1mSQL (0.000361)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.010608)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000101)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000205)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.000353)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000108)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000124)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.008827)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000075)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000126)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000317)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000106)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000133)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000302)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000094)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000112)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000291)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000085)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000116)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000303)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000182)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000294)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000438)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001935)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:50:38' or created_at < '2007-11-15 12:50:38') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000791)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000147)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001434)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.002130)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000930)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001251)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001333)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000156)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.001926)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003139)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.004276)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000356)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:52:00', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:52:00', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195149120, NULL, NULL, 'Richard', '2007-11-15 12:52:00', NULL, NULL)[0m
+  [4;36;1mSQL (0.000450)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.006678)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000130)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000229)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.008454)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000118)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000175)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000335)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000111)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000162)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000350)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000113)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000154)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.004015)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000111)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000164)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000374)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000117)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000156)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000357)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000111)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000162)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000355)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001906)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:52:00' or created_at < '2007-11-15 12:52:00') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000783)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000187)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001445)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.002113)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.021706)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001422)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001214)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000213)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002209)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003300)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000142)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000420)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:52:06', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:52:06', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195149126, NULL, NULL, 'Richard', '2007-11-15 12:52:06', NULL, NULL)[0m
+  [4;36;1mSQL (0.000393)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.002165)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000123)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000199)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.000320)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000114)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000165)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.015332)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000120)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000195)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000343)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000112)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000153)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000300)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000113)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000168)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.003580)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000118)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000146)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000295)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000120)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000163)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000355)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001876)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:52:06' or created_at < '2007-11-15 12:52:06') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000780)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000125)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001452)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.001971)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000915)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.012990)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001391)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000159)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002069)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003226)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000144)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000424)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:53:52', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:53:52', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195149232, NULL, NULL, 'Richard', '2007-11-15 12:53:52', NULL, NULL)[0m
+  [4;36;1mSQL (0.000475)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.001750)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001617)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000222)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.010308)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000075)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000133)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000311)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000090)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000116)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000306)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000090)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000113)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000296)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000088)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000112)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.003374)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000073)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000112)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000314)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000103)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000113)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000296)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001773)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:53:52' or created_at < '2007-11-15 12:53:52') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000633)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000146)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001409)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.001988)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000932)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001218)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001244)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000154)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002028)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003288)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000121)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000405)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:54:35', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:54:35', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195149275, NULL, NULL, 'Richard', '2007-11-15 12:54:35', NULL, NULL)[0m
+  [4;36;1mSQL (0.000419)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.001704)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000088)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000194)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.000337)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000072)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000128)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000277)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000093)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000115)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000307)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000088)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000115)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000479)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000128)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000169)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000372)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000073)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000123)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000291)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000093)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000114)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000426)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001972)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:54:35' or created_at < '2007-11-15 12:54:35') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000790)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000126)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001439)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.001950)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.014320)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001237)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001322)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000187)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.001907)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003213)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000113)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000331)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:55:05', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:55:05', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195149305, NULL, NULL, 'Richard', '2007-11-15 12:55:05', NULL, NULL)[0m
+  [4;36;1mSQL (0.000443)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.001915)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000858)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000271)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.009192)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000122)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000199)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000352)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000118)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000166)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000365)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000112)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000153)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.004005)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000115)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000177)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000364)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000113)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000151)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000310)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000113)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000165)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000320)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001909)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:55:05' or created_at < '2007-11-15 12:55:05') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000788)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000188)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001515)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.002117)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.001084)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001664)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001440)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000224)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002232)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003258)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000139)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000352)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:55:42', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:55:42', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195149342, NULL, NULL, 'Richard', '2007-11-15 12:55:42', NULL, NULL)[0m
+  [4;36;1mSQL (0.000428)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.003637)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000123)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000214)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.000338)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000118)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000167)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.015284)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000123)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000170)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000349)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000111)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000161)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000358)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000131)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000163)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.003665)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000111)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000163)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000357)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000114)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000161)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000357)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001860)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:55:42' or created_at < '2007-11-15 12:55:42') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000678)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000145)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001402)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.006488)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000949)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001310)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001919)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000218)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.002121)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003261)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000150)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000423)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 12:59:52', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 12:59:52', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 1195149592, NULL, NULL, 'Richard', '2007-11-15 12:59:52', NULL, NULL)[0m
+  [4;36;1mSQL (0.000379)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.003882)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000121)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000203)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.000319)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000110)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000164)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.011428)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000117)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000172)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000311)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000126)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000165)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000299)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000126)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000155)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.003659)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000110)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000157)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000321)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000112)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000179)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000290)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001875)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 12:59:52' or created_at < '2007-11-15 12:59:52') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000782)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000186)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001475)[0m   [0mDROP TABLE `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.002062)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ship_via` varchar(3) DEFAULT NULL, `billing_last_name` varchar(20) DEFAULT NULL, `billing_first_name` varchar(15) DEFAULT NULL, `billing_company` varchar(40) DEFAULT NULL, `billing_address_1` varchar(40) DEFAULT NULL, `billing_address_2` varchar(40) DEFAULT NULL, `billing_city` varchar(20) DEFAULT NULL, `billing_state` varchar(3) DEFAULT NULL, `billing_zipcode` varchar(10) DEFAULT NULL, `billing_phone` varchar(14) DEFAULT NULL, `billing_email` varchar(50) DEFAULT NULL, `billing_country` varchar(3) DEFAULT NULL, `shipping_last_name` varchar(20) DEFAULT NULL, `shipping_first_name` varchar(15) DEFAULT NULL, `shipping_company` varchar(40) DEFAULT NULL, `shipping_address_1` varchar(40) DEFAULT NULL, `shipping_address_2` varchar(40) DEFAULT NULL, `shipping_city` varchar(20) DEFAULT NULL, `shipping_state` varchar(3) DEFAULT NULL, `shipping_zipcode` varchar(10) DEFAULT NULL, `shipping_phone` varchar(14) DEFAULT NULL, `shipping_email` varchar(50) DEFAULT NULL, `shipping_country` varchar(3) DEFAULT NULL, `shipping_same_as_billing` tinyint(1) DEFAULT 1, `date_of_original_purchase_transaction` datetime DEFAULT NULL, `id_from_original_purchase_transaction` int(11) DEFAULT NULL, `hold_date` datetime DEFAULT NULL, `shipping_fee` decimal(8,2) DEFAULT NULL, `gift_message_1` varchar(70) DEFAULT NULL, `gift_message_2` varchar(70) DEFAULT NULL, `gift_message_3` varchar(70) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000954)[0m   [0mDROP TABLE `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.001273)[0m   [0;1mCREATE TABLE `sprocket_fulfillment_order_line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `sprocket_fulfillment_order_id` int(11) DEFAULT NULL, `sku` varchar(20) DEFAULT NULL, `quantity` int(11) DEFAULT NULL, `price` decimal(12,4) DEFAULT NULL, `discount` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.001319)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000214)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSprocketFulfillmentOrder Load (0.001912)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_orders` [0m
+  [4;35;1mSprocketFulfillmentOrder Columns (0.003208)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_orders`[0m
+  [4;36;1mSQL (0.000111)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrder Create (0.000339)[0m   [0mINSERT INTO `sprocket_fulfillment_orders` (`shipping_address_2`, `shipping_email`, `shipping_same_as_billing`, `shipping_state`, `billing_first_name`, `shipping_company`, `updated_at`, `billing_company`, `billing_phone`, `billing_zipcode`, `gift_message_1`, `hold_date`, `shipping_last_name`, `billing_city`, `gift_message_2`, `ship_via`, `shipping_first_name`, `date_of_original_purchase_transaction`, `gift_message_3`, `shipping_country`, `billing_address_1`, `billing_email`, `billing_state`, `shipping_city`, `billing_address_2`, `billing_country`, `id_from_original_purchase_transaction`, `shipping_phone`, `shipping_zipcode`, `billing_last_name`, `created_at`, `shipping_address_1`, `shipping_fee`) VALUES(NULL, NULL, 1, NULL, 'Dawkins', NULL, '2007-11-15 13:03:05', 'Oxford University', '12345678910', 'OX1 3BG', NULL, NULL, NULL, 'Oxford', NULL, 'PM', NULL, '2007-11-15 13:03:05', NULL, NULL, 'Bodleian Library', 'e@e.com', NULL, NULL, 'Floor 1', '073', 4337, NULL, NULL, 'Richard', '2007-11-15 13:03:05', NULL, NULL)[0m
+  [4;36;1mSQL (0.001735)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Columns (0.001844)[0m   [0mSHOW FIELDS FROM `sprocket_fulfillment_order_line_items`[0m
+  [4;36;1mSQL (0.000125)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000265)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '000', 1)[0m
+  [4;36;1mSQL (0.004099)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000111)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000166)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '001', 1)[0m
+  [4;35;1mSQL (0.000298)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000113)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000198)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '002', 1)[0m
+  [4;36;1mSQL (0.000366)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000114)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000176)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '003', 1)[0m
+  [4;35;1mSQL (0.000346)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000116)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000164)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '004', 1)[0m
+  [4;36;1mSQL (0.000328)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000117)[0m   [0mBEGIN[0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Create (0.000165)[0m   [0;1mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '005', 1)[0m
+  [4;35;1mSQL (0.000335)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000113)[0m   [0;1mBEGIN[0m
+  [4;35;1mSprocketFulfillmentOrderLineItem Create (0.000184)[0m   [0mINSERT INTO `sprocket_fulfillment_order_line_items` (`discount`, `price`, `quantity`, `sku`, `sprocket_fulfillment_order_id`) VALUES(43, '37.43', 37, '006', 1)[0m
+  [4;36;1mSQL (0.000303)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSprocketFulfillmentOrder Load (0.001919)[0m   [0mSELECT * FROM `sprocket_fulfillment_orders` WHERE (created_at > '2007-11-14 13:03:05' or created_at < '2007-11-15 13:03:05') [0m
+  [4;36;1mSprocketFulfillmentOrderLineItem Load (0.000793)[0m   [0;1mSELECT * FROM `sprocket_fulfillment_order_line_items` WHERE (sprocket_fulfillment_order_line_items.sprocket_fulfillment_order_id = 1) [0m
