@@ -4,11 +4,6 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
     
   attr_accessor :shipping_same_as_billing
     
-  def initialize(attributes=nil)
-    super(attributes)
-    @shipping_same_as_billing = true
-  end
-    
   has_many :sprocket_fulfillment_order_line_items
   
   validates_presence_of :billing_first_name, :billing_last_name, :billing_address_1, :billing_city, :billing_country, :billing_state, :billing_zipcode, :ship_via
@@ -31,16 +26,12 @@ class SprocketFulfillmentOrder < ActiveRecord::Base
     
   def foreign?
     if shipping_same_as_billing?
-      !self.billing_country.blank? && (self.billing_country != SprocketExpress::Data::country_names_to_country_codes['United States'])
+      !billing_country.blank? && (billing_country != SprocketExpress::Data::country_names_to_country_codes['United States'])
     else
-      !self.shipping_country.blank? && (self.shipping_country != SprocketExpress::Data::country_names_to_country_codes['United States'])
+      !shipping_country.blank? && (shipping_country != SprocketExpress::Data::country_names_to_country_codes['United States'])
     end
   end
-          
-  def shipping_same_as_billing?
-    @shipping_same_as_billing
-  end
-          
+
   private ##########################################################################
   
   def truncate_attributes_that_can_be

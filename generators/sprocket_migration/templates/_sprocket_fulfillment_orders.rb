@@ -22,6 +22,7 @@ create_table :sprocket_fulfillment_orders, :force => true do |t|
   t.string :shipping_phone, :limit => 14
   t.string :shipping_email, :limit => 50
   t.string :shipping_country, :limit => 3
+  t.boolean :shipping_same_as_billing, :default => true
   t.datetime :date_of_original_purchase_transaction
   t.integer :id_from_original_purchase_transaction
   t.datetime :hold_date

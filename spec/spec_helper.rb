@@ -74,7 +74,7 @@ def valid_order_attributes
 end
 
 def valid_line_item_attributes
-  { :sku => 'OMG',
+  { :sku => '3743',
     :quantity => 37,
     :price => 37.43,
     :discount => 43 }
