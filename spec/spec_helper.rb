@@ -69,13 +69,13 @@ def valid_order_attributes
     :billing_phone => '12345678910',
     :billing_email => 'e@e.com',
     :billing_country => SprocketExpress::Data.country_names_to_country_codes['United kingdom'],
-    :date_of_original_purchase_transaction => Time.now,
+    :date_of_original_purchase_transaction => Date.new(2007,04,28),
     :id_from_original_purchase_transaction => '4337'  }
 end
 
 def valid_line_item_attributes
   { :sku => '3743',
     :quantity => 37,
-    :price => 37.43,
+    :price => 99.99,
     :discount => 43 }
 end

@@ -1,7 +1,7 @@
 class SprocketDataPush
-  require 'csv'
   require 'enumerator' # (for Enumerable#each_slice)
   require 'requires_parameters'
+  require 'net/ftp'
   include RequiresParameters
   
   attr_accessor :options
@@ -55,28 +55,33 @@ class SprocketDataPush
     # enter prepared rows in CSV
     filename = File.join(options[:output_file_directory_path], "Sprocket_Data_Push_#{options[:start_time].strftime('%d-%m-%Y')}_#{options[:end_time].strftime('%d-%m-%Y')}.csv")
     titles = SprocketExpress::Data::csv_column_names
-    puts filename
-        
-    CSV.open(filename, 'w') do |writer|
+                    
+    File.open(filename, 'w') do |file|
       #first row as titles of fields
-      writer << titles
+      file << (titles.join(',') + "\n")
       # now add orders rows from hash based on titles as keys.  
       csv_rows.each do |row|
-        row_to_create = titles.inject([]) { |row_to_create,title| row_to_create << (row[title].to_s || '') }
-        writer << row_to_create
+        row_to_create = titles.inject([]) { |row_to_create,title| row_to_create << prepare_value_for_csv(row[title]) }
+        file << (row_to_create.join(',') + "\n")
       end
     end
     
     return filename
   end
   
-  def push_to_ftp!
-    # @TODO implement push_to_ftp (get ftp server details from Sprocket)
+  def push_to_ftp!(local_filename,remote_filename)
+    raise 'You must specify an ftp username and password.' if options[:ftp_username].blank? || options[:ftp_password].blank?
+    Net::FTP.open('luvdev.com') do |ftp|
+       ftp.login(options[:ftp_username],options[:ftp_password])
+       files = ftp.chdir('test')
+       ftp.putbinaryfile(local_filename, remote_filename)
+     end
   end
   
   def write_and_push_to_ftp!
-    write_csv!
-    # @TODO implement write_and_push_to_ftp
+    local_filename = write_csv!
+    remote_filename = File.basename(local_filename)
+    push_to_ftp!(local_filename,remote_filename)
   end
   
   private #######################################################
@@ -104,6 +109,18 @@ class SprocketDataPush
       end
     end
     csv_columns_to_order_values
+  end
+  
+  def prepare_value_for_csv(value)
+    if value.kind_of? String
+      "\"#{value}\""
+    elsif value.kind_of? Integer
+      value
+    elsif value.respond_to?(:to_f) && !value.nil?
+      "%.2f" % value.to_f
+    else
+      ''
+    end
   end
   
 end

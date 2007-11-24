@@ -26,7 +26,7 @@ describe 'A new', SprocketFulfillmentOrder, 'when given acceptable values for th
     @order.should be_valid
   end
   
-  it 'should, before validating, truncate billing_first_name, shipping_first_name, billing_last_name, shipping_last_name, billing_company, and shipping_company if those attributes are over the allowed lengths' do
+  it 'before validating, should truncate billing_first_name, shipping_first_name, billing_last_name, shipping_last_name, billing_company, and shipping_company if those attributes are over the allowed lengths' do
     { :billing_first_name => 15,
       :shipping_first_name => 15,
       :billing_last_name => 20,
@@ -57,7 +57,7 @@ end
 describe 'A new', SprocketFulfillmentOrder, 'when any one of the following attributes are missing: billing_first_name, billing_last_name, billing_address_1, billing_city, billing_country, billing_state, billing_zipcode, ship_via' do
 
   it 'should be invalid' do
-    [:billing_first_name, :billing_last_name, :billing_address_1, :billing_city, :billing_country, :billing_state, :billing_zipcode, :ship_via].each do |attribute|
+    [:billing_first_name, :billing_last_name, :billing_address_1, :billing_city, :billing_country, :billing_zipcode, :ship_via].each do |attribute|
       @order = SprocketFulfillmentOrder.new(valid_order_attributes.except(attribute))
       @order.should_not be_valid
     end
