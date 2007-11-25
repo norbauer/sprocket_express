@@ -1,13 +1,12 @@
-
-SprocketFulfillment
-===================
+SprocketExpress Order Fulfillment Library
+=========================================
 
 This plugin allows you to add Sprocket Express (www.sprocketexpress.com) order 
 fulfillment to your e-commerce store (or whatever.)  
 
 Sprocket Express (in their infinite antiquity) requires that you push a CSV 
 file every day to their FTP server with details of the items you want to be 
-shipped. So the plugin stores "SprocketFulfillmentOrders" in the db (along 
+shipped. So the plugin stores "SprocketExpressOrders" in the db (along 
 with all the attributes required by Sprocket Express).  You can then use the 
 built-in rake task to generate the proper CSV file and then upload it to the 
 Sprocket Express FTP server--a cron job is probably in order--each night.
@@ -21,9 +20,19 @@ Setup steps:
 
 Usage (saving orders)
 ---------
-@order = SprocketFulfillmentOrder.create( 
+# This will typically occur after you have saved an order using your
+# application's native "Order" ActiveRecord class/table. Even though
+# it means significant data duplication, it makes sense to create and
+# save this fulfillment "order" separately, because it really represents
+# an order from you to Sprocket Express to fulfill a certain item, not 
+# necessarily the original customer's order itself.  You might, for 
+# example, enter a fulfillment request into your application where you 
+# want Sprocket to send a promotional item to a PR contact or something,
+# without a corresponding order in your e-commerce orders database.
+
+@order = SprocketExpressOrder.create( 
            :ship_via => 
-             SprocketExpress::Data.carriers('USPS Priority Mail'),
+             SprocketExpress::carriers('USPS Priority Mail'),
            :billing_last_name => 'Richard',
            :billing_first_name => 'Dawkins',
            :billing_company => 'Oxford University',
@@ -35,21 +44,29 @@ Usage (saving orders)
            :billing_phone => '12345678910',
            :billing_email => 'e@e.com',
            :billing_country => 
-             SprocketExpress::Data.countries('United kingdom'),
+             SprocketExpress::countries('United kingdom'),
            :date_of_original_purchase_transaction => Time.now,
            :id_from_original_purchase_transaction => '4337')
 
-@order.sprocket_express_line_items << SprocketExpressLineItem.new(
-                                        :sku => '1234',
-                                        :quantity => 43, 
-                                        :price => 37.00,
-                                        :discount_percent => 10)
+@order.sprocket_express_order_line_items << SprocketExpressLineItem.new(
+                                              :sku => '1234',
+                                              :quantity => 43, 
+                                              :price => 37.00,
+                                              :discount_percent => 10)
 
 Usage (pushing orders to the SprocketExpress server)
 ---------
 # Sprocket prefers that you do this no more frequently than daily.
+# This will pull all previously unsent orders out of the db, send
+# them for fulfillment, and then mark the orders as sent for 
+# fulfillment
 
+# Your customer ID is given you to by Sprocket Express.
 
+@push = SprocketExpress::DataPush.new(:customer_id => 'NOR', 
+                                      :ftp_username => 'test', 
+                                      :ftp_password => 'test')
+@push.deliver!
 
 
 License

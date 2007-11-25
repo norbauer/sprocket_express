@@ -3,9 +3,9 @@ module SprocketExpress
   class DataPush
     
     require 'enumerator' # (for Enumerable#each_slice)
-    require 'requires_parameters'
     require 'net/ftp'
     require 'net_ftp_extensions'
+    require 'requires_parameters'
     include RequiresParameters
   
     attr_accessor :options
@@ -59,7 +59,7 @@ module SprocketExpress
       end
         
       # enter prepared rows in CSV
-      titles = SprocketExpress::Data::csv_column_names
+      titles = SprocketExpress::csv_column_names
        
       csv_rows = []
       #first row as titles of fields
@@ -107,7 +107,7 @@ module SprocketExpress
   
     def assign_order_attributes_to_corresponding_csv_columns(order)
       csv_columns_to_order_values = {}
-      SprocketExpress::Data::order_attributes_to_csv_column_names.each_pair do |order_attribute,csv_column_name|
+      SprocketExpress::order_attributes_to_csv_column_names.each_pair do |order_attribute,csv_column_name|
         csv_columns_to_order_values[csv_column_name] = order.send(order_attribute) if order.respond_to? order_attribute
         if order_attribute == :hold_date || order_attribute == :date_of_original_purchase_transaction
           csv_columns_to_order_values[csv_column_name] = csv_columns_to_order_values[csv_column_name].strftime("%m/%d/%y") unless csv_columns_to_order_values[csv_column_name].blank?

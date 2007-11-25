@@ -57,7 +57,7 @@ end
 # Valid attributes
 
 def valid_order_attributes
-  { :ship_via => SprocketExpress::Data.carrier_names_to_carrier_codes['USPS Priority Mail'],
+  { :ship_via => SprocketExpress::carriers('USPS Priority Mail'),
     :billing_last_name => 'Richard',
     :billing_first_name => 'Dawkins',
     :billing_company => 'Oxford University',
@@ -68,7 +68,7 @@ def valid_order_attributes
     :billing_zipcode => 'OX1 3BG',
     :billing_phone => '12345678910',
     :billing_email => 'e@e.com',
-    :billing_country => SprocketExpress::Data.country_names_to_country_codes['United kingdom'],
+    :billing_country => SprocketExpress::countries('United kingdom'),
     :date_of_original_purchase_transaction => Date.new(2007,04,28),
     :id_from_original_purchase_transaction => '4337'  }
 end

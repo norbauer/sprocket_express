@@ -7,5 +7,5 @@ Description:
 Example:
     ./script/generate sprocket_migration [migration_filename]
 
-    This will create a new migration called CreateSprocketFulfillmentTables and the tables
-    sprocket_fulfillment_orders and sprocket_fulfillment_order_line_items.
+    This will create a new migration called CreateSprocketExpressTables and thus the tables
+    sprocket_express_orders and sprocket_express_order_line_items.
