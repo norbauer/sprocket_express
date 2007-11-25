@@ -10,14 +10,14 @@ file every day to their FTP server with details of the items you want to be
 shipped. So the plugin stores "SprocketFulfillmentOrders" in the db (along 
 with all the attributes required by Sprocket Express).  You can then use the 
 built-in rake task to generate the proper CSV file and then upload it to the 
-Sprocket Express FTP server (a cron job is probably in order) each night.
+Sprocket Express FTP server--a cron job is probably in order--each night.
 
 
 Example
 =======
 
 Setup steps:
-1. Create a new migration using script/generate sprocket_fulfillment_migrations
+1. Create a new migration using script/generate sprocket_migration
 
 2. Create new order as defined below, and add some 
 sprocket_fullfillment_order_line_items

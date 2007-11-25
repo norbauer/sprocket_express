@@ -5,7 +5,7 @@ Description:
     order summary CSVs to its FTP server nightly.
 
 Example:
-    ./script/generate sprocket_fulfillment_migrations [migration_filename]
+    ./script/generate sprocket_migration [migration_filename]
 
     This will create a new migration called CreateSprocketFulfillmentTables and the tables
     sprocket_fulfillment_orders and sprocket_fulfillment_order_line_items.
