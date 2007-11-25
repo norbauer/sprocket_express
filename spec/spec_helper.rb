@@ -16,9 +16,9 @@ rescue LoadError
 end
 
 # Load up the models/modules in our plugin
-require 'sprocket_fullfillment_data'
-require 'sprocket_fulfillment_order'
-require 'sprocket_fulfillment_order_line_item'
+require 'data'
+require 'sprocket_express_order'
+require 'sprocket_express_order_line_item'
 
 plugin_spec_dir = File.dirname(__FILE__) 
 
@@ -77,5 +77,5 @@ def valid_line_item_attributes
   { :sku => '3743',
     :quantity => 37,
     :price => 99.99,
-    :discount => 43 }
+    :discount_percent => 43 }
 end

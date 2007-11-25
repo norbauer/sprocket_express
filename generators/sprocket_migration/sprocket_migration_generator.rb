@@ -1,7 +1,7 @@
 class SprocketMigrationGenerator < Rails::Generator::NamedBase
 
   def initialize(runtime_args, runtime_options = {})
-    runtime_args << 'create_sprocket_fulfillment_tables' if runtime_args.empty?
+    runtime_args << 'create_sprocket_express_tables' if runtime_args.empty?
     super
   end
 

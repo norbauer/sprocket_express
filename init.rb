@@ -1,0 +1,1 @@
+require 'sprocket_express'

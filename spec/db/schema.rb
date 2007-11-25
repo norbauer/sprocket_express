@@ -1,5 +1,5 @@
 ActiveRecord::Schema.define(:version => 0) do
-  create_table :sprocket_fulfillment_orders, :force => true do |t|
+  create_table :sprocket_express_orders, :force => true do |t|
     t.string :ship_via, :limit => 3
     t.string :billing_last_name, :limit => 20
     t.string :billing_first_name, :limit => 15
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(:version => 0) do
     t.timestamps
   end
 
-  create_table :sprocket_fulfillment_order_line_items, :force => true do |t|
-    t.integer :sprocket_fulfillment_order_id
+  create_table :sprocket_express_order_line_items, :force => true do |t|
+    t.integer :sprocket_express_order_id
     t.string :sku, :limit => 20
     t.integer :quantity
     t.decimal :price, :precision => 6, :scale => 2

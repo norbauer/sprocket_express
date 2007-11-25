@@ -1,20 +1,20 @@
 require File.dirname(__FILE__) + '/spec_helper'
-require 'sprocket_data_push'
+require 'sprocket_express'
 require 'fileutils'
 
 describe "An exported CSV version of a fulfillment order with more than five SKUs to ship" do
   
   before do
-    SprocketFulfillmentOrder.destroy_all
-    @order = SprocketFulfillmentOrder.new(valid_order_attributes)
+    SprocketExpressOrder.destroy_all
+    @order = SprocketExpressOrder.new(valid_order_attributes)
     @order.save!
     7.times do |n|
-      @order.sprocket_fulfillment_order_line_items << SprocketFulfillmentOrderLineItem.new(valid_line_item_attributes.with(:sku => "00#{n}"))
+      @order.sprocket_express_order_line_items << SprocketExpressOrderLineItem.new(valid_line_item_attributes.with(:sku => "00#{n}"))
     end
   end
 
   it 'should have transformed the data properly into the format specified by SprocketExpress' do
-    @push = SprocketDataPush.new(:customer_id => 'NOR')
+    @push = SprocketExpress::DataPush.new(:customer_id => 'NOR')
     
     rows, orders = @push.create_csv
         
@@ -29,7 +29,7 @@ describe "An exported CSV version of a fulfillment order with more than five SKU
   
   it 'should write the CSV file onto the remote FTP server' do
     # @TODO mock this bitch.
-    @push = SprocketDataPush.new(:customer_id => 'NOR', :ftp_username => 'test', :ftp_password => 'test')
+    @push = SprocketExpress::DataPush.new(:customer_id => 'NOR', :ftp_username => 'test', :ftp_password => 'test')
     @push.deliver!
   end
   
