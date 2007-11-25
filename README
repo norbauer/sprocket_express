@@ -19,34 +19,37 @@ Example
 Setup steps:
 1. Create a new migration using script/generate sprocket_migration
 
-2. Create new order as defined below, and add some 
-sprocket_fullfillment_order_line_items
-to it.  You can assign any of the attributes defined in 
-SprocketFulfillment::Map::MAPPING
-
-
-Usage
+Usage (saving orders)
 ---------
 @order = SprocketFulfillmentOrder.create( 
-           :first_name => 'Richard',
-           :last_name  => 'Dawkins',
-           :sales_id   => 'AMZ',
-           :address_1  => "11 Park Place",
-           :city       => "New York",
-           :country    => Map.get_country_code("United States"),
-           :state      => 'NY',
-           :zipcode    => '10007',
-           :ship_via   => Map.get_carrier_code('USPS Express Mail') 
-         )
+           :ship_via => 
+             SprocketExpress::Data.carriers('USPS Priority Mail'),
+           :billing_last_name => 'Richard',
+           :billing_first_name => 'Dawkins',
+           :billing_company => 'Oxford University',
+           :billing_address_1 => 'Bodleian Library',
+           :billing_address_2 => 'Floor 1',
+           :billing_city  => 'Oxford',
+           :billing_state => 'Oxford',
+           :billing_zipcode => 'OX1 3BG',
+           :billing_phone => '12345678910',
+           :billing_email => 'e@e.com',
+           :billing_country => 
+             SprocketExpress::Data.countries('United kingdom'),
+           :date_of_original_purchase_transaction => Time.now,
+           :id_from_original_purchase_transaction => '4337')
 
-@order.sprocket_fulfillment_order_line_items << SprocketFulfillmentOrderLineItem.new(:product => "370", 
-                                                :quantity => 43, 
-                                                :price => 37.00)
+@order.sprocket_express_line_items << SprocketExpressLineItem.new(
+                                        :sku => '1234',
+                                        :quantity => 43, 
+                                        :price => 37.00,
+                                        :discount_percent => 10)
 
-3. Create the CSV file by calling create_order_file_for on SprocketfulfillmentOrder 
-class with arguments like start_time and end_time. 
-eg. filename = SprocketFulfillmentOrder.create_order_file_for(Time.now.yesterday)
-filename is the location of newly generated file
+Usage (pushing orders to the SprocketExpress server)
+---------
+# Sprocket prefers that you do this no more frequently than daily.
+
+
 
 
 License

@@ -41,7 +41,7 @@ class CreateSprocketFulfillmentTables < ActiveRecord::Migration
       t.string :sku, :limit => 20
       t.integer :quantity
       t.decimal :price, :precision => 6, :scale => 2
-      t.integer :discount
+      t.integer :discount_percent
     end
   end
 

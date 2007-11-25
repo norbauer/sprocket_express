@@ -2,24 +2,27 @@ class SprocketDataPush
   require 'enumerator' # (for Enumerable#each_slice)
   require 'requires_parameters'
   require 'net/ftp'
+  require 'net_ftp_extensions'
   include RequiresParameters
   
   attr_accessor :options
+  
+  SPROCKET_FTP_DOMAIN = 'sprocketexpress.com'
     
   def initialize(options)
-    requires!(options, :customer_id, :start_time, :output_file_directory_path)
-    options.reverse_merge! :end_time => Time.now, :show_prices_on_invoice => true, :show_shipping_price_on_invoice => true, :ship_ahead => false, :send_invoice => false
+    requires!(options, :customer_id)
+    options.reverse_merge! :show_prices_on_invoice => true, :show_shipping_price_on_invoice => true, :ship_ahead => false, :send_invoice => false
     @options = options
   end
     
-  def write_csv!
-    orders = SprocketFulfillmentOrder.find(:all, :conditions => ["created_at > ? or created_at < ?", options[:start_time], options[:end_time]])     
+  def create_csv
+    orders = SprocketFulfillmentOrder.find_all_by_sent_for_fulfillment(false)     
     return false if orders.empty?
         
-    csv_rows = []
-
+    product_rows = []
+    
     orders.each do |order|
-
+    
       products = order.sprocket_fulfillment_order_line_items              
       # Orders with more than 5 products require generating a continuation line, with all the fields blank except the details of
       # the additional products you want to ship in that order. Only the first row should contain the full order details. 
@@ -44,57 +47,56 @@ class SprocketDataPush
           row_to_add["Product0#{product_number}"]  = options[:customer_id] + product.sku
           row_to_add["Quantity0#{product_number}"] = product.quantity
           row_to_add["Price0#{product_number}"]    = product.price if options[:show_prices_on_invoice]
-          row_to_add["Discount0#{product_number}"] = product.discount if options[:show_prices_on_invoice]
+          row_to_add["Discount0#{product_number}"] = product.discount_percent if options[:show_prices_on_invoice]
         end
         
-        csv_rows << row_to_add
+        product_rows << row_to_add 
       end
        
     end
         
     # enter prepared rows in CSV
-    filename = File.join(options[:output_file_directory_path], "Sprocket_Data_Push_#{options[:start_time].strftime('%d-%m-%Y')}_#{options[:end_time].strftime('%d-%m-%Y')}.csv")
     titles = SprocketExpress::Data::csv_column_names
-                    
-    File.open(filename, 'w') do |file|
-      #first row as titles of fields
-      file << (titles.join(',') + "\n")
-      # now add orders rows from hash based on titles as keys.  
-      csv_rows.each do |row|
-        row_to_create = titles.inject([]) { |row_to_create,title| row_to_create << prepare_value_for_csv(row[title]) }
-        file << (row_to_create.join(',') + "\n")
-      end
+       
+    csv_rows = []
+    #first row as titles of fields
+    csv_rows << (titles.join(',') + "\n")
+    # now add orders rows from hash based on titles as keys.  
+    product_rows.each do |row|
+      row_to_create = titles.inject([]) { |row_to_create,title| row_to_create << prepare_value_for_csv(row[title]) }
+      csv_rows << (row_to_create.join(',') + "\n")
     end
     
-    return filename
+    return csv_rows, orders
   end
   
-  def push_to_ftp!(local_filename,remote_filename)
-    raise 'You must specify an ftp username and password.' if options[:ftp_username].blank? || options[:ftp_password].blank?
-    Net::FTP.open('luvdev.com') do |ftp|
-       ftp.login(options[:ftp_username],options[:ftp_password])
-       files = ftp.chdir('test')
-       ftp.putbinaryfile(local_filename, remote_filename)
-     end
-  end
-  
-  def write_and_push_to_ftp!
-    local_filename = write_csv!
-    remote_filename = File.basename(local_filename)
-    push_to_ftp!(local_filename,remote_filename)
+  def deliver!
+    requires!(options,:ftp_username,:ftp_password)
+    csv_rows, orders = create_csv
+    if csv_rows && orders
+      Net::FTP.open(SPROCKET_FTP_DOMAIN) do |ftp|
+        ftp.extend(NetFtpExtensions)
+        ftp.login(options[:ftp_username],options[:ftp_password])
+        # @TODO waiting on info from Dan.
+        files = ftp.chdir('test')       
+        remote_filename = "#{options[:customer_id].upcase}_#{Time.now.strftime('%d-%m-%Y')}.csv"
+        ftp.send_text_lines(csv_rows, remote_filename)
+      end
+      orders.each { |o| o.update_attribute(:sent_for_fulfillment, true) }
+    end
   end
   
   private #######################################################
   
   def populate_row(row,order)
     row.merge!(assign_order_attributes_to_corresponding_csv_columns(order))
-    row['Foreign'] = order.foreign? ? 'Y' : 'N'
+    row['Foreign']    = order.foreign? ? 'Y' : 'N'
     row['Source_Key'] = options[:customer_id].upcase
-    row['Sales_ID'] = options[:customer_id].upcase
-    row['UsePrices'] = options[:show_prices_on_invoice] ? 'X' : ''
+    row['Sales_ID']   = options[:customer_id].upcase
+    row['UsePrices']  = options[:show_prices_on_invoice] ? 'X' : ''
     row['UseShipAmt'] = options[:show_shipping_price_on_invoice] ? 'X' : ''
-    row['ShipAhead'] = options[:ship_ahead] ? 'T' : 'F'
-    row['PayMethod'] = options[:send_invoice] ? 'IN' : 'ck'
+    row['ShipAhead']  = options[:ship_ahead] ? 'T' : 'F'
+    row['PayMethod']  = options[:send_invoice] ? 'IN' : 'ck'
     { 'Cust_Num' => '0', 'OrderType' => 'IMPORT' }.each_pair { |key,value| row[key] = value }
     ['Internet','NoMail','NoRent','NoEmail','BestOrderPromo'].each { |key| row[key] = 'F' }
     row
