@@ -41,9 +41,12 @@ module SprocketExpress
             first_row_in_the_current_order = false
           else
             row_to_add["Continued"] = "X"
-            # continuation lines (preposterously) require a shipping address to be specified
-            ['last_name','first_name','company','address_1','address_2','city','state','zipcode','country','phone','email'].each do |attribute_suffix|
-              row_to_add[SprocketExpress::order_attributes_to_csv_column_names["shipping_#{attribute_suffix}".intern]] = order.send("#{(order.shipping_same_as_billing? ? 'billing_' : 'shipping_') + attribute_suffix }")
+            # continuation lines (preposterously) require a shipping address to be specified, unless billing_same_as_shipping
+            unless order.shipping_same_as_billing?
+              ['last_name','first_name','company','address_1','address_2','city','state','zipcode','country','phone','email'].each do |attribute_suffix|
+                attribute = 'shipping_' + attribute_suffix
+                row_to_add[SprocketExpress::order_attributes_to_csv_column_names[attribute.intern]] = order.send(attribute)
+              end
             end
           end
                         

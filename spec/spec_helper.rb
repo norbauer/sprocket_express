@@ -67,7 +67,8 @@ def valid_order_attributes
     :billing_email => 'e@e.com',
     :billing_country => SprocketExpress::countries('United kingdom'),
     :date_of_original_purchase_transaction => Date.new(2007,04,28),
-    :id_from_original_purchase_transaction => '4337' }
+    :id_from_original_purchase_transaction => '4337',
+    :shipping_same_as_billing => true }
 end
 
 def valid_line_item_attributes

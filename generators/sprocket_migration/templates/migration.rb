@@ -24,9 +24,9 @@ class CreateSprocketExpressTables < ActiveRecord::Migration
       t.string :shipping_phone, :limit => 14
       t.string :shipping_email, :limit => 50
       t.string :shipping_country, :limit => 3
-      t.boolean :shipping_same_as_billing, :default => true
+      t.boolean :shipping_same_as_billing, :default => false
       t.datetime :date_of_original_purchase_transaction
-      t.integer :id_from_original_purchase_transaction
+      t.string :id_from_original_purchase_transaction
       t.datetime :hold_date
       t.decimal :shipping_fee, :precision => 8, :scale => 2
       t.string :gift_message_1, :limit => 70
