@@ -1,10 +1,10 @@
 class SprocketExpressOrder < ActiveRecord::Base
   
   include SprocketExpress
-    
-  attr_accessor :shipping_same_as_billing
-    
+        
   has_many :sprocket_express_order_line_items
+  
+  attr_accessor :shipping_same_as_billing
   
   validates_presence_of :billing_first_name, :billing_last_name, :billing_address_1, :billing_city, :billing_country, :billing_zipcode, :ship_via
   validates_presence_of :billing_state, :if => Proc.new { |order| !order.foreign? }

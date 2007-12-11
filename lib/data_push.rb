@@ -10,7 +10,7 @@ module SprocketExpress
   
     attr_accessor :options
   
-    SPROCKET_FTP_DOMAIN = 'sprocketexpress.com'
+    SPROCKET_FTP_DOMAIN = 'ftp.xeran.com'
     
     def initialize(options)
       requires!(options, :customer_id)
@@ -41,6 +41,10 @@ module SprocketExpress
             first_row_in_the_current_order = false
           else
             row_to_add["Continued"] = "X"
+            # continuation lines (foolishly) require a shipping address to be specified
+            ['last_name','first_name','company','address_1','address_2','city','state','zipcode','country','phone','email'].each do |attribute_suffix|
+              row_to_add[SprocketExpress::order_attributes_to_csv_column_names["shipping_#{attribute_suffix}".intern]] = order.send("#{(order.shipping_same_as_billing? ? 'billing_' : 'shipping_') + attribute_suffix }".intern)
+            end
           end
                         
           grouping_of_five_or_fewer_products = unassigned_groupings_of_five_or_fewer_products.slice!(0)
@@ -80,8 +84,6 @@ module SprocketExpress
         Net::FTP.open(SPROCKET_FTP_DOMAIN) do |ftp|
           ftp.extend(NetFtpExtensions)
           ftp.login(options[:ftp_username],options[:ftp_password])
-          # @TODO waiting on info from Dan.
-          files = ftp.chdir('test')       
           remote_filename = "#{options[:customer_id].upcase}_#{Time.now.strftime('%d-%m-%Y')}.csv"
           ftp.send_text_lines(csv_rows, remote_filename)
         end

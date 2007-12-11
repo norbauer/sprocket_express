@@ -1,9 +1,9 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe 'A new', SprocketFulfillmentOrder, '(in general)' do
+describe 'A new', SprocketExpressOrder, '(in general)' do
   
   before(:each) do 
-    @order = SprocketFulfillmentOrder.new
+    @order = SprocketExpressOrder.new
   end
   
   it 'should default to having shipping the same as the billing address' do
@@ -16,10 +16,10 @@ describe 'A new', SprocketFulfillmentOrder, '(in general)' do
   
 end
 
-describe 'A new', SprocketFulfillmentOrder, 'when given acceptable values for the following attributes (and nothing more): ship_via, billing_last_name, billing_first_name, billing_company, billing_address_1, billing_address_2, billing_city, billing_state, billing_zipcode, billing_phone, billing_email, billing_country, date_of_original_purchase_transaction, id_from_original_purchase_transaction' do
+describe 'A new', SprocketExpressOrder, 'when given acceptable values for the following attributes (and nothing more): ship_via, billing_last_name, billing_first_name, billing_company, billing_address_1, billing_address_2, billing_city, billing_state, billing_zipcode, billing_phone, billing_email, billing_country, date_of_original_purchase_transaction, id_from_original_purchase_transaction and shipping_same_as_billing set to true' do
   
   before(:each) do 
-    @order = SprocketFulfillmentOrder.new(valid_order_attributes)
+    @order = SprocketExpressOrder.new(valid_order_attributes)
   end
 
   it 'should be valid' do
@@ -54,11 +54,11 @@ describe 'A new', SprocketFulfillmentOrder, 'when given acceptable values for th
   
 end
 
-describe 'A new', SprocketFulfillmentOrder, 'when any one of the following attributes are missing: billing_first_name, billing_last_name, billing_address_1, billing_city, billing_country, billing_state, billing_zipcode, ship_via' do
+describe 'A new', SprocketExpressOrder, 'when any one of the following attributes are missing: billing_first_name, billing_last_name, billing_address_1, billing_city, billing_country, billing_state, billing_zipcode, ship_via' do
 
   it 'should be invalid' do
     [:billing_first_name, :billing_last_name, :billing_address_1, :billing_city, :billing_country, :billing_zipcode, :ship_via].each do |attribute|
-      @order = SprocketFulfillmentOrder.new(valid_order_attributes.except(attribute))
+      @order = SprocketExpressOrder.new(valid_order_attributes.except(attribute))
       @order.should_not be_valid
     end
   end  
@@ -66,13 +66,12 @@ describe 'A new', SprocketFulfillmentOrder, 'when any one of the following attri
 end
 
 
-describe 'A', SprocketFulfillmentOrder, 'with shipping_same_as_billing set to true but values specified for shipping' do
+describe 'A', SprocketExpressOrder, 'with shipping_same_as_billing set to true but values specified for shipping' do
   
   before(:each) do 
-    @order = SprocketFulfillmentOrder.new(valid_order_attributes)
-    @order.shipping_same_as_billing = true
+    @order = SprocketExpressOrder.new(valid_order_attributes)
   end
-  
+    
   it 'should remove those values before saving' do
     [ "shipping_last_name", "shipping_first_name", "shipping_company", "shipping_address_1", "shipping_address_2",
       "shipping_city", "shipping_state", "shipping_zipcode", "shipping_phone", "shipping_email", "shipping_country" ].each do |attribute|
