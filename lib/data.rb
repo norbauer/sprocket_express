@@ -333,8 +333,9 @@ module SprocketExpress
                                                  { :shipping_address_2                    => 'SAddress2' },   
                                                  { :shipping_city                         => 'SCity' },      
                                                  { :shipping_state                        => 'SState' },      
-                                                 { :shipping_zipcode                     => 'SZipCode' },    
+                                                 { :shipping_zipcode                      => 'SZipCode' },    
                                                  { :hold_date                             => 'HoldDate' },    # Keep this constant unless we are doing your invoicing
+                                                 { :send_invoice                          => 'PayMethod' },
                                                  { :greeting_1                            => 'Greeting1' },   
                                                  { :greeting_2                            => 'Greeting2' },   
                                                  { :promo_cred                            => 'PromoCred' },   

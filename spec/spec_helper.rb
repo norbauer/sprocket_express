@@ -59,7 +59,7 @@ def valid_order_attributes
     :billing_first_name => 'Dawkins',
     :billing_company => 'Oxford University',
     :billing_address_1 => 'Bodleian Library',
-    :billing_address_2 => 'Floor 1',
+    :billing_address_2 => 'Malmöñ étage',
     :billing_city  => 'Oxford',
     :billing_state => 'Oxford',
     :billing_zipcode => 'OX1 3BG',

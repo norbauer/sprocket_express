@@ -2,12 +2,13 @@ class SprocketExpressOrder < ActiveRecord::Base
   
   include SprocketExpress
         
-  has_many :sprocket_express_order_line_items
+  has_many :sprocket_express_order_line_items, :dependent => :destroy
     
   validates_presence_of :billing_first_name, :billing_last_name, :billing_address_1, :billing_city, :billing_country, :billing_zipcode, :ship_via
   validates_presence_of :billing_state, :if => Proc.new { |order| !order.foreign? }
   validates_length_of :billing_city, :shipping_city, :maximum => 20, :allow_nil => true
   validates_length_of :billing_address_1, :billing_address_2, :shipping_address_1, :shipping_address_2, :maximum => 40, :allow_nil => true
+  validates_length_of :gift_message_1, :gift_message_2, :gift_message_3, :maximum => 70, :allow_nil => true
   
   validates_presence_of :shipping_zipcode, :if => Proc.new { |order| !order.shipping_same_as_billing? }
   validates_presence_of :shipping_address_1, :if => Proc.new { |order| !order.shipping_same_as_billing? }

@@ -4,6 +4,7 @@ module SprocketExpress
     
     require 'enumerator' # (for Enumerable#each_slice)
     require 'net/ftp'
+    require 'unicode'
     require 'net_ftp_extensions'
     require 'requires_parameters'
     include RequiresParameters
@@ -123,14 +124,20 @@ module SprocketExpress
   
     def prepare_value_for_csv(value)
       if value.kind_of? String
-        "\"#{value}\""
+        output = "\"#{value}\""
       elsif value.kind_of? Integer
-        value
+        output = value
       elsif value.respond_to?(:to_f) && !value.nil?
-        "%.2f" % value.to_f
+        output = "%.2f" % value.to_f
       else
-        ''
+        output = ''
       end
+      output = strip_foreign_characters_from(output) if (!output.blank? && output.kind_of?(String))
+      output
+    end
+    
+    def strip_foreign_characters_from(string)
+      Unicode.normalize_KD(string).unpack('U*').select{ |cp| cp < 0x0300 || cp > 0x036F }.pack('U*')
     end
   
   end
