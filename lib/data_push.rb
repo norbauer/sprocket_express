@@ -105,7 +105,7 @@ module SprocketExpress
       row['UsePrices']  = options[:show_prices_on_invoice] ? 'X' : ''
       row['UseShipAmt'] = options[:show_shipping_price_on_invoice] ? 'X' : ''
       row['ShipAhead']  = options[:ship_ahead] ? 'T' : 'F'
-      row['PayMethod']  = options[:send_invoice] ? 'IN' : 'ck'
+      row['PayMethod']  = options[:send_invoice] ? 'IN' : 'CK'
       { 'Cust_Num' => '0', 'OrderType' => 'IMPORT' }.each_pair { |key,value| row[key] = value }
       ['Internet','NoMail','NoRent','NoEmail','BestOrderPromo'].each { |key| row[key] = 'F' }
       row
