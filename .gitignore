@@ -1,0 +1,5 @@
+*.log
+db/schema.rb
+db/schema.sql
+config/database.yml
+.DS_Store
